@@ -35,8 +35,8 @@ background = transform.scale(image.load('font.jpg'),(700,500))
 font.init()
 font1 = font.SysFont('Arial',70)
 font2 = font.SysFont('Arial',30)
-win = font1.render('YOU WIN!',True,(255,215,0))
-lose = font1.render('YOU LOSE!',True,(255,215,0))
+win1 = font1.render('Левый проиграл!',True,(255,215,0))
+win2 = font1.render('Правый проиграл!',True,(255,215,0))
 
 
 
@@ -78,6 +78,12 @@ while game:
             speed_y *= -1
         if  sprite.collide_rect(player1,egg) or sprite.collide_rect(player2,egg):
             speed_x *= -1
+        if egg.rect.x < -50:
+            window.blit(win1,(100,200))
+            finish = True
+        if egg.rect.x > 700:
+            window.blit(win2,(100,200))
+            finish = True
         
 
     clock.tick(FPS)
